@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myCatalogue">
+<head>
+	<meta charset="UTF-8" />
+	<title>Demo Spring Boot rest and angularJS</title>
+	<link rel="stylesheet" type="text/css"
+	href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body ng-controller="CatController">
+	<div class="container spacer">
+		<form>
+			<label>Mot clé: </label> <input type="text" ng-model="motCle">
+			<button ng-click="charger()">Chercher</button>
+		</form>
+	</div>
+	<div class="container spacer">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Reference</th>
+					<th>Designation</th>
+					<th>Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="produit in produits.content">
+					<td>{{produit.reference}}</td>
+					<td>{{produit.designation}}</td>
+					<td>{{produit.prix}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<ul class="nav">
+			<li ng-class="{active:$index==pageCourant}e" ng-repeat="p in pages track by $index">
+				<a href ng-click="goToPage($index)"> {{$index + 1}} </a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
